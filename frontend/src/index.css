@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { min-height: 100%; }
+body { @apply bg-slate-50 text-slate-800 antialiased overflow-x-hidden; }
+:focus-visible { @apply outline-none ring-2 ring-emerald-500 ring-offset-2; }
+
+@layer components {
+  .input { @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 transition focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 disabled:bg-slate-100; }
+  .label { @apply mb-1.5 block text-sm font-medium text-slate-700; }
+  .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg px-4 text-sm font-semibold transition active:scale-[.98] disabled:cursor-not-allowed disabled:opacity-60; }
+  .btn-primary { @apply btn bg-emerald-600 text-white hover:bg-emerald-700; }
+  .btn-navy { @apply btn bg-navy-800 text-white hover:bg-navy-700; }
+  .btn-ghost { @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50; }
+  .btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700; }
+  .card { @apply rounded-2xl bg-white shadow-card ring-1 ring-slate-200/70; }
+  .icon-btn { @apply inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-navy-800; }
+}
+
+/* One quiet entrance when the route changes */
+@keyframes page-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.page-enter { animation: page-in .25s ease-out; }
+@keyframes sheet-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.sheet-enter { animation: sheet-in .22s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
